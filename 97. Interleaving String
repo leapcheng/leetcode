@@ -6,26 +6,26 @@ class Solution {
         if(len3 != len1 + len2){
             return false;
         }
-        if(len1 == 0 && len2 == 0 && len3 == 0){
+        if(len1 == 0 && len2 == 0 && len3 == 0) {
             return true;
         }
         boolean[][] ans = new boolean[len1 + 1][len2 + 1];
-        for(int i = 0 ; i < len1; ++i){
-            if(s1.charAt(i) == s3.charAt(i)){
+        for(int i = 0 ; i < len1; ++i) {
+            if(s1.charAt(i) == s3.charAt(i)) {
                 ans[i + 1][0] = true;
             }else{
                 break;
             }
         }
-        for(int i = 0; i < len2; ++i){
-            if(s2.charAt(i) == s3.charAt(i)){
+        for(int i = 0; i < len2; ++i) {
+            if(s2.charAt(i) == s3.charAt(i)) {
                 ans[0][i + 1] = true;
             }else{
                 break;
             }
         }
-        for(int i = 1; i < len1 + 1; ++i){
-            for(int j = 1; j < len2 + 1; ++j){
+        for(int i = 1; i < len1 + 1; ++i) {
+            for(int j = 1; j < len2 + 1; ++j) {
                 ans[i][j] = ans[i - 1][j]&&(s1.charAt(i - 1) == s3.charAt(i + j - 1)) || ans[i][j - 1]&&(s2.charAt(j - 1) == s3.charAt(i + j - 1));
             }
         }
