@@ -1,21 +1,21 @@
 class Solution {
     public int candy(int[] ratings) {
-        if(ratings == null || ratings.length == 0){
+        if(ratings == null || ratings.length == 0) {
             return 0;
         }
-        if(ratings.length == 1){
+        if(ratings.length == 1) {
             return 1;
         }
         int len = ratings.length;
         int[] ans = new int[len];
-        for(int i = 1; i < len; ++i){
-            if(ratings[i] > ratings[i - 1]){
+        for(int i = 1; i < len; ++i) {
+            if(ratings[i] > ratings[i - 1]) {
                 ans[i] = ans[i - 1] + 1;
             }
         }
         int sum = ans[len - 1];
-        for(int i = len - 2; i >= 0; --i){
-            if(ratings[i] > ratings[i + 1] && ans[i] <= ans[i + 1]){
+        for(int i = len - 2; i >= 0; --i) {
+            if(ratings[i] > ratings[i + 1] && ans[i] <= ans[i + 1]) {
                 ans[i] = ans[i + 1] + 1;
             }
             sum += ans[i];
