@@ -3,51 +3,51 @@ class Solution {
         char[] cs = s.toCharArray();
         int sum = 0;
         int i = 0;
-        while(i < cs.length){
-            if(cs[i] == 'M'){
+        while(i < cs.length) {
+            if(cs[i] == 'M') {
                 sum += 1000;
-                i++;
-            }else if(cs[i] == 'D'){
+                ++i;
+            }else if(cs[i] == 'D') {
                 sum += 500;
-                i++;
-            }else if(cs[i] == 'C'){
-                if(i + 1 < cs.length && cs[i + 1] == 'D'){
+                ++i;
+            }else if(cs[i] == 'C') {
+                if(i + 1 < cs.length && cs[i + 1] == 'D') {
                     sum += 400;
                     i += 2;
-                }else if(i + 1 < cs.length && cs[i + 1] == 'M'){
+                }else if(i + 1 < cs.length && cs[i + 1] == 'M') {
                     sum += 900;
                     i += 2;
-                }else{
+                }else {
                     sum += 100;
-                    i++;
+                    ++i;
                 }
-            }else if(cs[i] == 'L'){
+            }else if(cs[i] == 'L') {
                 sum += 50;
-                i++;
-            }else if(cs[i] == 'X'){
-                if(i + 1 < cs.length && cs[i + 1] == 'L'){
+                ++i;
+            }else if(cs[i] == 'X') {
+                if(i + 1 < cs.length && cs[i + 1] == 'L') {
                     sum += 40;
                     i += 2;
-                }else if(i + 1 < cs.length && cs[i + 1] == 'C'){
+                }else if(i + 1 < cs.length && cs[i + 1] == 'C') {
                     sum += 90;
                     i += 2;
-                }else{
+                }else {
                     sum += 10;
-                    i++;
+                    ++i;
                 }
-            }else if(cs[i] == 'V'){
+            }else if(cs[i] == 'V') {
                 sum += 5;
-                i++;
-            }else{
-                if(i + 1 < cs.length && cs[i + 1] == 'V'){
+                ++i;
+            }else {
+                if(i + 1 < cs.length && cs[i + 1] == 'V') {
                     sum += 4;
                     i += 2;
-                }else if(i + 1 < cs.length && cs[i + 1] == 'X'){
+                }else if(i + 1 < cs.length && cs[i + 1] == 'X') {
                     sum += 9;
                     i += 2;
-                }else{
+                }else {
                     sum += 1;
-                    i++;
+                    ++i;
                 }
             }
         }
