@@ -1,3 +1,4 @@
+Solution 1:
 class Solution {
     public int reverse(int x) {
         long temp = 0;
@@ -14,5 +15,29 @@ class Solution {
             return 0;
         }
         return (int)temp;
+    }
+}
+
+Solution 2:
+class Solution {
+    public int reverse(int x) {
+        long ans = 0;
+        long temp = x;
+        int flag = 1;
+        if(temp < 0) {
+            flag = -1;
+            temp = Math.abs(temp);
+        }
+        while(temp != 0) {
+            ans = 10 * ans + temp % 10;
+            if((flag == 1 && ans > Integer.MAX_VALUE) || (flag == -1 && -ans < Integer.MIN_VALUE)) {
+                return 0;
+            }
+            temp /= 10;
+        }
+        if(flag == -1) {
+            ans = -ans;
+        }
+        return (int)ans;
     }
 }
