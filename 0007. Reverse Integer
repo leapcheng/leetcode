@@ -2,16 +2,16 @@ Solution 1:
 class Solution {
     public int reverse(int x) {
         long temp = 0;
-        if(x < 0){
+        if(x < 0) {
             temp = x;
             String s = new StringBuilder(String.valueOf(-temp)).reverse().toString();
             temp = Long.valueOf(s); // Long.valueOf(s)可以将开头的0忽略
             temp = -temp;
-        }else{
+        }else {
             String s = new StringBuilder(String.valueOf(x)).reverse().toString();
             temp = Long.valueOf(s);
         }
-        if(temp > Integer.MAX_VALUE || temp < Integer.MIN_VALUE){
+        if(temp > Integer.MAX_VALUE || temp < Integer.MIN_VALUE) {
             return 0;
         }
         return (int)temp;
