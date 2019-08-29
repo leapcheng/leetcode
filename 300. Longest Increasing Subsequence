@@ -1,0 +1,83 @@
+//O(NlogN)
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int maxL = 0;
+        int[] dp = new int[nums.length];
+        for(int num : nums) {
+            int l = 0, r = maxL;
+            while(l < r) {
+                int m = l + (r -l) / 2;
+                if(dp[m] < num) {
+                    l = m + 1;
+                }else{
+                    r = m;
+                }
+            }
+            dp[l] = num;
+            if(l == maxL) {
+                ++maxL;   
+            }
+        }
+        return maxL;
+    }
+}
+
+
+/*
+//O(N * N) 
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int[] dp = new int[nums.length];
+        for(int i = 0; i < nums.length; ++i) {
+            dp[i] = 1;
+            for(int j = 0; j < i; ++j) {
+                if(nums[j] < nums[i] && dp[j] + 1 > dp[i]) {
+                    dp[i] = dp[j] + 1;
+                }
+            }
+        }
+        int max = 0;
+        for(int i = 0; i < nums.length; ++i) {
+            if(dp[i] > max) {
+                max = dp[i];
+            }
+        }
+        return max;
+    }
+}
+*/
+
+/*
+//当条件弱化成>=时
+//O(NlogN)
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int maxL = 0;
+        int[] dp = new int[nums.length];
+        for(int num : nums) {
+            int l = 0, r = maxL;
+            while(l < r) {
+                int m = l + (r -l) / 2;
+                if(dp[m] <= num) {
+                    l = m + 1;
+                }else{
+                    r = m;
+                }
+            }
+            
+            if(l == maxL) {
+                ++maxL;
+                dp[l] = num;
+            }else if(dp[l] == num && l == maxL - 1) {
+                dp[maxL] = num;
+                ++maxL;
+            }else if(dp[l] == num && l != maxL - 1) {
+                dp[l + 1] = num;
+            }else {
+                dp[l] = num;
+            }
+        }
+        return maxL;
+    }
+}
+*/
