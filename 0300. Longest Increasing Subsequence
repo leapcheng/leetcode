@@ -9,7 +9,7 @@ class Solution {
                 int m = (l + r)>>>1;
                 if(dp[m] < num) { //当写成dp[m] <= num时，表示不用严格递增，大于等于就行
                     l = m + 1;
-                }else{
+                }else {
                     r = m;
                 }
             }
