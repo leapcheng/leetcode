@@ -1,0 +1,15 @@
+class Solution {
+    public int mySqrt(int x) {
+        if(x < 2){
+            return x;
+        }
+        double m = (double)x;
+        double k = 1;
+        double temp = m / k;
+        while(Math.abs(k - temp) >= 0.000001){
+            k = (k + temp) / 2.0;
+            temp = m / k;
+        }
+        return (int)k;
+    }
+}
