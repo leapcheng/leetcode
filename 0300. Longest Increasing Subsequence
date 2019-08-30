@@ -7,7 +7,7 @@ class Solution {
             int l = 0, r = maxL;
             while(l < r) {
                 int m = l + (r -l) / 2;
-                if(dp[m] < num) {
+                if(dp[m] < num) { //当写成dp[m] <= num时，表示不用严格递增，大于等于就行
                     l = m + 1;
                 }else{
                     r = m;
@@ -21,7 +21,6 @@ class Solution {
         return maxL;
     }
 }
-
 
 /*
 //O(N * N) 
@@ -43,41 +42,6 @@ class Solution {
             }
         }
         return max;
-    }
-}
-*/
-
-/*
-//当条件弱化成>=时
-//O(NlogN)
-class Solution {
-    public int lengthOfLIS(int[] nums) {
-        int maxL = 0;
-        int[] dp = new int[nums.length];
-        for(int num : nums) {
-            int l = 0, r = maxL;
-            while(l < r) {
-                int m = l + (r -l) / 2;
-                if(dp[m] <= num) {
-                    l = m + 1;
-                }else{
-                    r = m;
-                }
-            }
-            
-            if(l == maxL) {
-                ++maxL;
-                dp[l] = num;
-            }else if(dp[l] == num && l == maxL - 1) {
-                dp[maxL] = num;
-                ++maxL;
-            }else if(dp[l] == num && l != maxL - 1) {
-                dp[l + 1] = num;
-            }else {
-                dp[l] = num;
-            }
-        }
-        return maxL;
     }
 }
 */
