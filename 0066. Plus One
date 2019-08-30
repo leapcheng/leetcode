@@ -1,0 +1,17 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int ca = 0;
+        digits[digits.length - 1] += 1;
+        for(int i = digits.length - 1; i >= 0; --i) {
+            int temp = ca + digits[i];
+            digits[i] = temp % 10;
+            ca = temp / 10;
+            if(ca == 0) {
+                return digits;
+            }
+        }
+        int[] ans = new int[digits.length + 1];
+        ans[0] = 1;
+        return ans;
+    }
+}
