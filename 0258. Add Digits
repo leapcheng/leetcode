@@ -1,0 +1,19 @@
+Solution 1:
+class Solution {
+    public int addDigits(int num) {
+        return 1 + (num - 1) % 9; //直接num % 9 结果是0~8，但实际是1~9，可以试验：1 + (9 - 1) % 9 = 9
+    }
+}
+
+Solution 2:
+class Solution {
+    public int addDigits(int num) {
+        if(num > 9) {
+            num %= 9;
+            if(num == 0) {
+                num = 9;
+            }
+        }
+        return num;
+    }
+}
