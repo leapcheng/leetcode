@@ -1,0 +1,9 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+        int ans = nums.length; //下面的i是从0到nums.length - 1，所以此处要补上nums.leng
+        for(int i = 0; i < nums.length; ++i) {
+            ans ^= nums[i]^i;
+        }
+        return ans;
+    }
+}
