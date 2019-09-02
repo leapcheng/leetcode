@@ -1,0 +1,56 @@
+Solution 1:
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k %= n;
+        for(int i = 0; i < k; ++i) {
+            int temp = nums[n - 1];
+            for(int j = n - 1; j > 0; --j) {
+                nums[j] = nums[j - 1];
+            }
+            nums[0] = temp;
+        }
+    }
+}
+
+Solution 2:
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k %= n;
+        reverse(nums, 0, n - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
+    }
+    
+    public void reverse(int[] nums, int start, int end) {
+        while(start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            ++start;
+            --end;
+        }
+    }
+}
+
+Solution 3:
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k %= n;
+        int count = 0;        
+        for(int i = 0; count < n; ++i) { //do是从count = 0开始的，到count = n - 1正好执行了n个do
+            int cur = i;
+            int pre = nums[cur];
+            do{
+                int next = (cur + k) % n;
+                int temp = nums[next];
+                nums[next] = pre;
+                cur = next;
+                pre = temp;
+                ++count;
+            }while(cur != i);
+        }
+    }
+}
