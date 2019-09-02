@@ -1,0 +1,24 @@
+Solution 1:
+public class Solution {
+    // you need treat n as an unsigned value
+    public int reverseBits(int n) {
+        int ans = 0;
+        for(int i = 0; i < 32; ++i) {
+            ans += (1&(n>>i))<<(31 - i); //第0位移到第31位
+        }
+        return ans;
+    }
+}
+
+Solution 2:
+public class Solution {
+    // you need treat n as an unsigned value
+    public int reverseBits(int n) {
+        int ans = 0;
+        for(int i = 0; i < 32; ++i) {
+            ans <<= 1;
+            ans += (1&(n>>i));
+        }
+        return ans;
+    }
+}
