@@ -1,0 +1,14 @@
+class Solution {
+    public int countNumbersWithUniqueDigits(int n) {
+        if(n == 0) {
+            return 1; // x = 0
+        }
+        int ans = 10; //0 ~ 9
+        int temp = 9; //首位不能是0，只能取1 ~ 9
+        for(int i = 1; i < n; ++i) {
+            temp *= (10 - i); //第二位有9种可能（第二位可以是0），从第二位开始，可能性依次减一
+            ans += temp;
+        }
+        return ans;
+    }
+}
